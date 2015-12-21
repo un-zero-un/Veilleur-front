@@ -1,0 +1,25 @@
+{
+  "name": "veilleur-front",
+  "version": "0.0.0",
+  "description": "Veilleur frontend",
+  "repository": "https://github.com/un-zero-un/Veilleur",
+  "dependencies": {
+    "babel-core": "^6.3.21",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "flux": "^2.0.1",
+    "gulp": "^3.9.0",
+    "gulp-cli": "^1.0.0",
+    "gulp-concat": "^2.6.0",
+    "react": "^0.12.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "gulp-template": "^3.1.0"
+  },
+  "author": "Yohan Giarelli",
+  "private": true
+}

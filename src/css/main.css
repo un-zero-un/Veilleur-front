@@ -1,0 +1,30 @@
+.watch-link {
+    box-sizing: border-box;
+    border: 1px solid #555;
+    border-top-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+}
+
+.watch-link-url {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.watch-link-content {
+    order: 2;
+}
+
+.watch-link-image-container {
+    order: 1;
+    margin-right: 2em;
+}
+
+.watch-link-image {
+    height:     auto;
+    max-width:  15em;
+    max-height: 40vh;
+}

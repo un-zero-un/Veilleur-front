@@ -1,0 +1,3 @@
+export default {
+    RECEIVED_CONTENT: 'WATCH_LINK.RECEIVED_CONTENT'
+};
