@@ -19,6 +19,7 @@
     "whatwg-fetch": "^0.10.1"
   },
   "devDependencies": {
+    "gulp-connect": "^2.3.1",
     "gulp-template": "^3.1.0"
   },
   "author": "Yohan Giarelli",
