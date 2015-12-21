@@ -10,7 +10,7 @@ import template   from 'gulp-template';
 gulp.task('js', () => {
     return browserify({
         extensions: ['.js', '.jsx'],
-        entries: 'src/jsx/app.jsx'
+        entries: ['node_modules/whatwg-fetch/fetch.js', 'src/jsx/app.jsx']  
     })
         .transform(babelify.configure({
             ignore: /(bower_components)|(node_modules)/
