@@ -48,7 +48,7 @@ export default React.createClass({
             <div>
                 <div>
                     {this.state.watchLinks.map((watchLink) => {
-                        return (<WatchLink watchLink={watchLink} key={watchLink['@id']} />);
+                        return (<WatchLink watchLink={watchLink} key={watchLink.id} />);
                     })}
                 </div>
                 <div>

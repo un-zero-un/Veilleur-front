@@ -1,6 +1,7 @@
 import Dispatcher from '../dispatcher/Dispatcher';
 import Constants  from '../constants/WatchLink';
 import Config     from '../constants/Config';
+import WatchLink  from '../model/WatchLink';
 
 class WatchLinkStore {
     constructor() {
@@ -24,7 +25,7 @@ class WatchLinkStore {
     onReceive(page, response) {
         this.totalItems       = response['hydra:totalItems'];
         this.itemsPerPage     = response['hydra:itemsPerPage'];
-        this.watchLinks[page] = response['hydra:member'];
+        this.watchLinks[page] = response['hydra:member'].map(watchLink => new WatchLink(watchLink));
 
         Dispatcher.dispatch({ type: Constants.RECEIVED_CONTENT });
     }

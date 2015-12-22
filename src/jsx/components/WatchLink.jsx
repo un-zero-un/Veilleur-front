@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React from 'react';
 
 export default React.createClass({
@@ -7,6 +8,9 @@ export default React.createClass({
                 <div className="watch-link-content">
                     <h2>{this.props.watchLink.name}</h2>
                     <cite className="watch-link-url">
+                        <time dateTime={moment(this.props.watchLink.createdAt).format()}>
+                            {moment(this.props.watchLink.createdAt).fromNow()}
+                        </time> —
                         <a href={this.props.watchLink.url}>{this.props.watchLink.url}</a>
                     </cite>
 
@@ -16,7 +20,7 @@ export default React.createClass({
                                 <ul className="watch-links-tags">
                                     {this.props.watchLink.tags.map((tag) => {
                                         return (
-                                            <li className="watch-links-tag">
+                                            <li className="watch-links-tag" key={tag.id}>
                                                 <span className="watch-links-tag-label">{tag.name}</span>
                                             </li>
                                         );
@@ -38,7 +42,6 @@ export default React.createClass({
                         );
                     }
                 })()}
-
             </blockquote>
         );
     }
