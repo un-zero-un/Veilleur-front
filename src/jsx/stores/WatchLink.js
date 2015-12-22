@@ -24,7 +24,7 @@ class WatchLinkStore {
 
         this.watchLinks[tagString] = {};
         this.watchLinks[tagString][page] = [];
-        let url = Config.ENTRYPOINT + '/watch_links?page=' + page;
+        let url = Config.ENTRYPOINT + '/watch_links?order[createdAt]=DESC&page=' + page;
         if (0 !== tags.length) {
             url += tags.map((tag, index) => `&tags[${index}]=${tag}`).join('');
         }
