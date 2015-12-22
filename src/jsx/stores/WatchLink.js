@@ -11,7 +11,8 @@ class WatchLinkStore {
     }
 
     getLasts(page = 1) {
-        if (0 === this.watchLinks[page].length) {
+        if (undefined === this.watchLinks[page] || 0 === this.watchLinks[page].length) {
+            this.watchLinks[page] = [];
             fetch(Config.ENTRYPOINT + '/watch_links?page=' + page)
                 .then(response => response.json())
                 .then(this.onReceive.bind(this, page));

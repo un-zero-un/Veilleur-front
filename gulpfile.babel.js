@@ -39,7 +39,8 @@ gulp.task('default', ['html', 'js', 'css']);
 gulp.task('serve', () => {
     connect.server({
         port: 8000,
-        root: 'dist'
+        root: 'dist',
+        fallback: 'dist/index.html'
     });
 });
 
