@@ -40,7 +40,7 @@ export default class extends React.Component {
 
     toggleTag(tag) {
         let tags = this.state.activeTags.slice(0);
-        if (-1 === this.state.activeTags.indexOf(tag.name)) {
+        if (!this.isTagActive(tag)) {
             tags.push(tag.name);
 
             return tags
@@ -49,15 +49,25 @@ export default class extends React.Component {
         return tags.filter(item => item !== tag.name);
     }
 
+    isTagActive(tag) {
+        return -1 !== this.state.activeTags.indexOf(tag.name);
+    }
+
     render() {
         return (
             <div>
                 <ul>
                     {this.state.tags.map((tag) => {
                         return (
-                            <li key={tag.id}>
-                                <Link to={`/tags/${this.toggleTag(tag).join('|')}/`}>
-                                    <span>{tag.name}</span>
+                            <li key={tag.id}
+                                className={(this.isTagActive(tag) ? 'active' : 'inactive') + ' tag'}>
+                                <Link to={`/tags/${this.toggleTag(tag).join('|')}/`} className="tag-link">
+                                    <span className="tag-link-label">
+                                        {tag.name}
+                                    </span>
+                                    <span className="tag-link-count">(
+                                        <span className="tag-link-inside">{tag.watchLinks.length}</span>
+                                    )</span>
                                 </Link>
                             </li>
                         );
