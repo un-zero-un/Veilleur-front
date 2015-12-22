@@ -9,6 +9,23 @@ export default React.createClass({
                     <cite className="watch-link-url">
                         <a href={this.props.watchLink.url}>{this.props.watchLink.url}</a>
                     </cite>
+
+                    {(() => {
+                        if (this.props.watchLink.tags.length > 0) {
+                            return (
+                                <ul className="watch-links-tags">
+                                    {this.props.watchLink.tags.map((tag) => {
+                                        return (
+                                            <li className="watch-links-tag">
+                                                <span className="watch-links-tag-label">{tag.name}</span>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            );
+                        }
+                    })()}
+
                     <p>{this.props.watchLink.description}</p>
                 </div>
 
