@@ -7,6 +7,7 @@ import babelify   from 'babelify';
 import source     from 'vinyl-source-stream';
 import template   from 'gulp-template';
 import connect    from 'gulp-connect';
+import plumber    from 'gulp-plumber';
 
 gulp.task('js', () => {
     return browserify({
@@ -18,6 +19,7 @@ gulp.task('js', () => {
         }))
         .bundle()
         .on("error", function (err) { console.log("Error : " + err.message); })
+        .pipe(plumber())
         .pipe(source('app.js'))
         .pipe(gulp.dest('dist/js'));
 });
