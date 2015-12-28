@@ -1,0 +1,36 @@
+@import "includes/colors";
+
+.pager {
+  display: block;
+  text-align: center;
+
+  .pager-item {
+    background: white;
+    display: inline-block;
+    padding: .2em 1em;
+
+    &:not(:last-child) {
+      border-right: 1px solid #aaaaaa;
+    }
+
+    &:first-child {
+      border-top-left-radius: .5em;
+      border-bottom-left-radius: .5em;
+    }
+
+    &:last-child {
+      border-top-right-radius: .5em;
+      border-bottom-right-radius: .5em;
+    }
+  }
+
+  .pager-item-link {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: $tag-link-color;
+
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}

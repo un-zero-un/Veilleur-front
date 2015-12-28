@@ -1,14 +1,27 @@
 @import "includes/colors";
 
 .tags-list {
+  align-content: flex-start;
+  background: darken($almost-white, .5%);
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-content: flex-start;
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 2em 1em;
+  max-height: 100em;
+
+  box-shadow: inset 0 0 .5em -.3em darken($tag-background, 20%);
+
+  transition: all 1s;
+
+  &.closed {
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 1em;
+  }
 }
 
 .tag {
@@ -36,4 +49,34 @@
 .tag-link-count {
   color: lighten($tag-link-color, 30%);
   margin-left: .5em;
+}
+
+.tags-nav-icon {
+  width: 2em;
+  height: 2em;
+
+  line {
+    stroke: $tag-link-color;
+    stroke-width: .25em;
+    stroke-linecap: round;
+    transition: all 1s;
+  }
+
+  &.active {
+    .middle-line {
+      stroke-width: 0;
+    }
+
+    .top-line {
+      transform: rotate(45deg) translate(20%, -10%);
+    }
+
+    .bottom-line {
+      transform: rotate(-45deg) translate(-70%, -25%);
+    }
+  }
+}
+
+.tag-list-opener {
+  cursor: pointer;
 }
