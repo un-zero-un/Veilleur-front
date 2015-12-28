@@ -8,6 +8,7 @@ import source     from 'vinyl-source-stream';
 import template   from 'gulp-template';
 import connect    from 'gulp-connect';
 import plumber    from 'gulp-plumber';
+import sass       from 'gulp-sass';
 
 gulp.task('js', () => {
     return browserify({
@@ -25,9 +26,16 @@ gulp.task('js', () => {
 });
 
 gulp.task('css', () => {
-    gulp.src('src/css/*.css')
+    gulp.src('src/scss/*.scss')
+        .pipe(plumber())
+        .pipe(sass())
         .pipe(concat('styles.css'))
         .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('images', () => {
+    gulp.src('src/images/*')
+        .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('html', () => {
@@ -36,7 +44,7 @@ gulp.task('html', () => {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['html', 'js', 'css']);
+gulp.task('default', ['html', 'js', 'css', 'images']);
 
 gulp.task('serve', () => {
     connect.server({
@@ -47,7 +55,8 @@ gulp.task('serve', () => {
 });
 
 gulp.task('watch', ['default', 'serve'], () => {
+    gulp.watch('src/images/*', ['images']);
     gulp.watch('src/jsx/**/*', ['js']);
-    gulp.watch('src/css/*.css', ['css']);
+    gulp.watch('src/scss/**/*.scss', ['css']);
     gulp.watch(['src/**.html', 'config.json'], ['html']);
 });

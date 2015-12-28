@@ -1,0 +1,39 @@
+@import "includes/colors";
+
+.tags-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag {
+  background: $tag-background;
+  margin: .3em .4em;
+  border-radius: .2em;
+  padding: .1em .5em;
+  box-shadow: .08em .08em .15em 0 darken($tag-background, 20%);
+
+  &.active {
+    background: darken($tag-background, 10%);
+  }
+}
+
+.tag-link {
+  color: $tag-link-color;
+  text-decoration: none;
+
+  &::before {
+    content: '#';
+    color: darken($tag-link-color, 20%);
+  }
+}
+
+.tag-link-count {
+  color: lighten($tag-link-color, 30%);
+  margin-left: .5em;
+}

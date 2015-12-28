@@ -55,8 +55,8 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div>
-                <ul>
+            <nav className="tags-nav">
+                <ul className="tags-list">
                     {this.state.tags.map((tag) => {
                         return (
                             <li key={tag.id}
@@ -65,15 +65,13 @@ export default class extends React.Component {
                                     <span className="tag-link-label">
                                         {tag.name}
                                     </span>
-                                    <span className="tag-link-count">(
-                                        <span className="tag-link-inside">{tag.watchLinks.length}</span>
-                                    )</span>
+                                    <span className="tag-link-count">{tag.watchLinks.length}</span>
                                 </Link>
                             </li>
                         );
                     })}
                 </ul>
-            </div>
+            </nav>
         );
     }
 }

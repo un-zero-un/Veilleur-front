@@ -55,7 +55,7 @@ export default class extends React.Component {
         return (
             <div>
                 <Tags params={this.props.params} />
-                <div>
+                <div className="watch-links">
                     {this.state.watchLinks.map((watchLink) => {
                         return (<WatchLink watchLink={watchLink} key={watchLink.id} />);
                     })}
