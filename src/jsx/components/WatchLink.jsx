@@ -6,12 +6,16 @@ export default React.createClass({
         return (
             <blockquote className="watch-link">
                 <div className="watch-link-content">
-                    <h2>{this.props.watchLink.name}</h2>
+                    <h2 className="watch-link-title">
+                        <a href={this.props.watchLink.url} tabIndex="-1" className="watch-link-title-link">
+                            {this.props.watchLink.name}
+                        </a>
+                    </h2>
                     <cite className="watch-link-url">
                         <time dateTime={moment(this.props.watchLink.createdAt).format()}>
                             {moment(this.props.watchLink.createdAt).fromNow()}
-                        </time> —
-                        <a href={this.props.watchLink.url}>{this.props.watchLink.url}</a>
+                        </time>
+                        <a href={this.props.watchLink.url} className="watch-link-link">{this.props.watchLink.url}</a>
                     </cite>
 
                     {(() => {

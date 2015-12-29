@@ -12,8 +12,6 @@
 
 .watch-link {
   background: $almost-white;
-  border-radius: .4em;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column-reverse;
   flex-grow: 1;
@@ -23,16 +21,36 @@
   max-width: 30em;
   box-shadow: .05em .05em .15em 0 $tag-background;
 
-  @media (min-width: 40em) {
-    margin:  1em;
+  .watch-link-link {
+    color: $grey;
+    display: block;
+    max-width: 18em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  @media (max-width: 39.99em) {
-    margin:  1em 0;
+  @media (min-width: 30em) {
+    border-radius: .4em;
+    margin: 1em;
+  }
+
+  @media (max-width: 29.99em) {
+    margin: 1em 0;
   }
 
   .watch-link-title {
-    max-width: 20em;
+    display: inline-table;
+    table-layout: fixed;
+    margin: .4em 0;
+    width: 100%;
+    word-wrap: break-word;
+    text-shadow: .05em .05em .05em $tag-background;
+  }
+
+  .watch-link-title-link {
+    color: $tag-link-color;
+    text-decoration: none;
   }
 
   .watch-link-image-container {
@@ -40,11 +58,11 @@
   }
 
   .watch-link-image {
-    width:  100%;
+    width: 100%;
     height: auto;
   }
 
   .watch-link-content {
-    padding: 1em;
+    padding: .5em 1em;
   }
 }

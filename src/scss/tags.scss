@@ -1,35 +1,42 @@
 @import "includes/colors";
 
-.tags-list {
+@mixin tag-list() {
   align-content: flex-start;
-  background: darken($almost-white, .5%);
-  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   list-style-type: none;
+}
+@mixin tag() {
+  background: $tag-background;
+  margin: .3em .4em;
+  border-radius: .2em;
+  padding: .1em .5em;
+  box-shadow: .08em .08em .15em 0 darken($tag-background, 20%);
+}
+
+.tags-list {
+  @include tag-list;
+
+  background: darken($almost-white, .5%);
   margin: 0;
-  padding: 4em 1em;
+  padding: 1em;
   max-height: 100em;
-
   box-shadow: inset 0 0 .5em -.3em darken($tag-background, 20%);
-
   transition: all 1s;
+  position: fixed;
+  z-index: 1;
+  overflow: hidden;
 
   &.closed {
-    overflow: hidden;
     max-height: 0;
     padding: 0 1em;
   }
 }
 
 .tag {
-  background: $tag-background;
-  margin: .3em .4em;
-  border-radius: .2em;
-  padding: .1em .5em;
-  box-shadow: .08em .08em .15em 0 darken($tag-background, 20%);
+  @include tag;
 
   &.active {
     background: darken($tag-background, 10%);
@@ -49,4 +56,16 @@
 .tag-link-count {
   color: lighten($tag-link-color, 30%);
   margin-left: .5em;
+}
+
+
+.watch-links-tags {
+  @include tag-list;
+
+  margin: 1em 0;
+  padding: 0;
+
+  .watch-links-tag {
+    @include tag;
+  }
 }
