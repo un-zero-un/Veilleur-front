@@ -60,17 +60,23 @@ export default class extends React.Component {
         this.setState(this.state);
     }
 
+    openerSvg() {
+        return (
+            <svg viewBox="0 0 40 40" className={'tags-nav-icon ' + (this.state.tagListOpen ? 'active' : '')}>
+                <line x1="2" y1="5" x2="38" y2="5" className="top-line" />
+                <line x1="2" y1="20" x2="38" y2="20" className="middle-line" />
+                <line x1="2" y1="35" x2="38" y2="35" className="bottom-line" />
+            </svg>
+        );
+    }
+
     render() {
         return (
             <nav className="tags-nav">
                 <div className="top-bar">
                     <h1 className="main-title">Veilleur</h1>
                     <a className="tag-list-opener" onClick={this.toggleTagList.bind(this)}>
-                        <svg viewBox="0 0 30 40" className={'tags-nav-icon ' + (this.state.tagListOpen ? 'active' : '')}>
-                            <line x1="2" y1="5" x2="38" y2="5" className="top-line" />
-                            <line x1="2" y1="20" x2="38" y2="20" className="middle-line" />
-                            <line x1="2" y1="35" x2="38" y2="35" className="bottom-line" />
-                        </svg>
+                        {this.openerSvg()}
                     </a>
                 </div>
                 <ul className={'tags-list ' + (this.state.tagListOpen ? 'open' : 'closed')}>

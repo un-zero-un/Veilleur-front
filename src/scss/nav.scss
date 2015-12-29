@@ -35,11 +35,11 @@
     }
 
     .top-line {
-      transform: rotate(45deg) translate(20%, -10%);
+      transform: rotate(45deg) translate(.5em, -.35em);
     }
 
     .bottom-line {
-      transform: rotate(-45deg) translate(-70%, -25%);
+      transform: rotate(-45deg) translate(-1.2em, -.4em);
     }
   }
 }
