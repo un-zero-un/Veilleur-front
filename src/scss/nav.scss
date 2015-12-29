@@ -1,0 +1,47 @@
+@import "includes/colors";
+
+.top-bar {
+  background:      $dark-grey;
+  color:           $very-light-grey;
+  display:         flex;
+  justify-content: space-between;
+  position:        fixed;
+  width:           100%;
+}
+
+.main-title {
+  font-size: 2em;
+  margin: .2em .5em;
+  font-weight: normal;
+}
+
+.tags-nav-icon {
+  width:  2em;
+  height: 2em;
+  margin: .5em 2em;
+
+  line {
+    stroke: $very-light-grey;
+    stroke-width: .25em;
+    stroke-linecap: round;
+    transition: all .5s;
+  }
+
+  &.active {
+    .middle-line {
+      stroke-width: 0;
+    }
+
+    .top-line {
+      transform: rotate(45deg) translate(20%, -10%);
+    }
+
+    .bottom-line {
+      transform: rotate(-45deg) translate(-70%, -25%);
+    }
+  }
+}
+
+.tag-list-opener {
+  cursor: pointer;
+}

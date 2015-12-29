@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   list-style-type: none;
-  margin: 0;
+  margin: 3em 0 0 0;
   padding: 0;
 }
 
@@ -18,11 +18,18 @@
   flex-direction: column-reverse;
   flex-grow: 1;
   justify-content: center;
-  margin:  1em;
   padding: 0;
   flex-basis: 20em;
   max-width: 30em;
   box-shadow: .05em .05em .15em 0 $tag-background;
+
+  @media (min-width: 40em) {
+    margin:  1em;
+  }
+
+  @media (max-width: 39.99em) {
+    margin:  1em 0;
+  }
 
   .watch-link-title {
     max-width: 20em;
