@@ -8,6 +8,8 @@ import createHashHistory from 'history/lib/createHashHistory';
 import Config from './constants/Config';
 import WatchLinks from './components/WatchLinks';
 
+import '../scss/main.scss';
+
 let $element = document.getElementById('app');
 let createHistory = window.location.protocol === 'file:' ? createHashHistory : createBrowserHistory;
 

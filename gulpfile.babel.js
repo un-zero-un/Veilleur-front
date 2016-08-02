@@ -1,10 +1,11 @@
 'use strict';
 
-import gulp       from 'gulp';
-import template   from 'gulp-template';
-import connect    from 'gulp-connect';
-import plumber    from 'gulp-plumber';
-import webpack    from 'webpack-stream';
+import gulp              from 'gulp';
+import template          from 'gulp-template';
+import connect           from 'gulp-connect';
+import plumber           from 'gulp-plumber';
+import webpack           from 'webpack-stream';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 gulp.task('js', () => {
     return gulp.src('src/jsx/app.js')
@@ -12,10 +13,14 @@ gulp.task('js', () => {
         .pipe(webpack({
             module: {
                 loaders: [
-                    {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+                    {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
+                    {test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")}
                 ]
             },
-            output: {filename: '[name].js'}
+            output: {filename: '[name].js'},
+            plugins: [
+                new ExtractTextPlugin("../css/[name].css")
+            ]
         }))
         .pipe(gulp.dest('dist/js'));
 });
@@ -31,7 +36,7 @@ gulp.task('html', () => {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['html', 'js', 'css', 'images']);
+gulp.task('default', ['html', 'js', 'images']);
 
 gulp.task('serve', () => {
     connect.server({
@@ -44,6 +49,6 @@ gulp.task('serve', () => {
 gulp.task('watch', ['default', 'serve'], () => {
     gulp.watch('src/images/*', ['images']);
     gulp.watch('src/jsx/**/*', ['js']);
-    gulp.watch('src/scss/**/*.scss', ['css']);
+    gulp.watch('src/scss/**/*.scss', ['js']);
     gulp.watch(['src/**.html', 'config.json'], ['html']);
 });
