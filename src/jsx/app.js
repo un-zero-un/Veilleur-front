@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { render } from 'react-dom';
+import { Router, Route, Redirect } from 'react-router';
+
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import createHashHistory from 'history/lib/createHashHistory';
-import { Router, Route, Link, Redirect } from 'react-router';
+
 import Config from './constants/Config';
 import WatchLinks from './components/WatchLinks';
 
@@ -11,7 +13,7 @@ let createHistory = window.location.protocol === 'file:' ? createHashHistory : c
 
 Config.ENTRYPOINT = $element.getAttribute('data-entrypoint');
 
-class App extends React.Component
+class App extends Component
 {
     render() {
         return (

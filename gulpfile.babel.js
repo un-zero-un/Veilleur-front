@@ -1,36 +1,23 @@
 'use strict';
 
 import gulp       from 'gulp';
-import concat     from 'gulp-concat';
-import browserify from 'browserify';
-import babelify   from 'babelify';
-import source     from 'vinyl-source-stream';
 import template   from 'gulp-template';
 import connect    from 'gulp-connect';
 import plumber    from 'gulp-plumber';
-import sass       from 'gulp-sass';
+import webpack    from 'webpack-stream';
 
 gulp.task('js', () => {
-    return browserify({
-        extensions: ['.js', '.jsx'],
-        entries: ['node_modules/whatwg-fetch/fetch.js', 'src/jsx/app.jsx']
-    })
-        .transform(babelify.configure({
-            ignore: /(bower_components)|(node_modules)/
+    return gulp.src('src/jsx/app.js')
+        .pipe(plumber())
+        .pipe(webpack({
+            module: {
+                loaders: [
+                    {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+                ]
+            },
+            output: {filename: '[name].js'}
         }))
-        .bundle()
-        .on("error", function (err) { console.log("Error : " + err.message); })
-        .pipe(plumber())
-        .pipe(source('app.js'))
         .pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('css', () => {
-    gulp.src('src/scss/*.scss')
-        .pipe(plumber())
-        .pipe(sass())
-        .pipe(concat('styles.css'))
-        .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('images', () => {
