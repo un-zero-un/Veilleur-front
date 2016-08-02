@@ -6,24 +6,36 @@ import Tag        from '../model/Tag';
 
 class TagStore {
     constructor() {
-        this.tags         = [];
+        this.tags = [];
     }
 
     getAll() {
         if (0 === this.tags.length) {
-
-            fetch(Config.ENTRYPOINT + '/tags')
-                .then(response => response.json())
-                .then(this.onReceive.bind(this));
+            this.fetch(1);
         }
 
         return this.tags;
     }
 
+    fetch(page) {
+        fetch(Config.ENTRYPOINT + '/tags?page=' + page)
+            .then(response => response.json())
+            .then(this.onReceive.bind(this))
+            .then(this.continueIfNeeded.bind(this, page));
+    }
+
     onReceive(response) {
-        this.tags = response['hydra:member'].map(tag => new Tag(tag));
+        response['hydra:member'].forEach(tag => this.tags.push(new Tag(tag)));
 
         Dispatcher.dispatch({ type: Constants.RECEIVED_CONTENT });
+
+        return response;
+    }
+
+    continueIfNeeded(page, response) {
+        if (30 === response['hydra:member'].length) {
+            this.fetch(page + 1)
+        }
     }
 }
 

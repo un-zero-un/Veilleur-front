@@ -2,7 +2,7 @@
   "name": "veilleur-front",
   "version": "0.0.0",
   "description": "Veilleur frontend",
-  "repository": "https://github.com/un-zero-un/Veilleur",
+  "repository": "git@github.com:un-zero-un/Veilleur-front.git",
   "dependencies": {
     "babel-core": "^6.3.21",
     "babel-polyfill": "^6.3.14",
