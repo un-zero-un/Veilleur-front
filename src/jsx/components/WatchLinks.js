@@ -2,7 +2,6 @@ import React from 'react';
 import WatchLinkStore from '../stores/WatchLink';
 import Dispatcher from '../dispatcher/Dispatcher';
 import WatchLink from './WatchLink';
-import Tags from './Tags';
 import Constants from '../constants/WatchLink';
 import { Link } from 'react-router';
 
@@ -54,12 +53,13 @@ export default class extends React.Component {
     render() {
         return (
             <div>
-                <Tags params={this.props.params} />
-                <div className="watch-links">
-                    {this.state.watchLinks.map((watchLink) => {
-                        return (<WatchLink watchLink={watchLink} key={watchLink.id} />);
-                    })}
-                </div>
+                <table className="watch-links">
+                    <tbody>
+                        {this.state.watchLinks.map((watchLink) => {
+                            return (<WatchLink watchLink={watchLink} key={watchLink.id} />);
+                        })}
+                    </tbody>
+                </table>
                 <div>
                     <ul className="pager">
                         {this.getPages().map((page) => {

@@ -1,0 +1,32 @@
+.watch-links {
+  background:      $gray-lighter;
+  margin:          1em;
+  border-collapse: separate;
+  border-spacing:  2px;
+
+  .watch-link-content {
+    background:    $gray-lightest;
+    border-radius: 1px;
+    font-size:     .8em;
+    padding:       .25em 1em;
+  }
+}
+
+.watch-link-date {
+  color: $gray-light;
+  float: right;
+}
+
+.watch-link-title {
+  display:      inline-block;
+  font-size:    1em;
+  margin-right: .7em;
+}
+
+.watch-link-title-link {
+  color: $gray;
+}
+
+.watch-link-link {
+  color: $gray-light;
+}

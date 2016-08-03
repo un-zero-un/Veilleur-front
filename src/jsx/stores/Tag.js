@@ -33,7 +33,7 @@ class TagStore {
     }
 
     continueIfNeeded(page, response) {
-        if (30 === response['hydra:member'].length) {
+        if (response['hydra:itemsPerPage'] === response['hydra:member'].length) {
             this.fetch(page + 1)
         }
     }

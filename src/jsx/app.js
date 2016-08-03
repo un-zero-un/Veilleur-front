@@ -7,6 +7,8 @@ import createHashHistory from 'history/lib/createHashHistory';
 
 import Config from './constants/Config';
 import WatchLinks from './components/WatchLinks';
+import Tags from './components/Tags';
+import Layout from './components/Layout';
 
 import '../scss/main.scss';
 
@@ -20,11 +22,13 @@ class App extends Component
     render() {
         return (
             <Router history={createHistory()}>
-                <Redirect from="/" to="/page/1" />
-                <Redirect from="/tags//" to="/page/1" />
-                <Redirect from="/tags/:tags" to="/tags/:tags/page/1" />
-                <Route path="/page/:page" component={WatchLinks} />
-                <Route path="/tags/:tags/page/:page" component={WatchLinks} />
+                <Route path="/" component={Layout}>
+                    <Redirect from="/" to="/page/1" />
+                    <Redirect from="/tags//" to="/page/1" />
+                    <Redirect from="/tags/:tags" to="/tags/:tags/page/1" />
+                    <Route path="/page/:page" components={{content: WatchLinks, sidebar: Tags}} />
+                    <Route path="/tags/:tags/page/:page" components={{content: WatchLinks, sidebar: Tags}} />
+                </Route>
             </Router>
         );
     }
